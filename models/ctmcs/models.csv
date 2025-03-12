@@ -19,10 +19,6 @@ model_file,model_consts,model_type,states,time_constr
 "erlangen.prism","size1=20,size2=5",CTMC,30996,0.018
 "erlangen.prism","size1=30,size2=8",CTMC,68634,0.029
 "erlangen.prism","size1=40,size2=10",CTMC,110946,0.023
-"mainframe.prism","size1=10,size2=4",CTMC,13530,0.026
-"mainframe.prism","size1=20,size2=5",CTMC,30996,0.029
-"mainframe.prism","size1=30,size2=8",CTMC,68634,0.033
-"mainframe.prism","size1=40,size2=10",CTMC,110946,0.023
 "fms.sm","n=1",CTMC,54,0.05
 "fms.sm","n=10",CTMC,25397658,26.943
 "fms.sm","n=2",CTMC,810,0.084
