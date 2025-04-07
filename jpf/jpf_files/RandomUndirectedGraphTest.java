@@ -3,7 +3,7 @@
  * 
  * @author Yash Dhamija
  */
-public class RandomGraphTest {
+public class RandomUndirectedGraphTest {
 
 	/*
 	 * creates a graph (n x n matrix).
