@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# loop through number = 4, 6, ..., 5000
-for (( i = 4000; i <= 5000; i++ )); do
+for (( i = 4000; i <= 4010; i++ )); do
 	#store the number to be checked
 	number=$i
 	j=2

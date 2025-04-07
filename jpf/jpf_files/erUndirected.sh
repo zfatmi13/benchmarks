@@ -7,7 +7,7 @@ size=5
 # loop through size = 2, 3, ..., 10
 # and prob = 0.02, 0.04, ..., 1.0
 for (( j = 1; j <= 10; j++ )); do
-	prob=$(echo "$prob + 0.1"|bc)
+	prob=$(echo "$prob + 0.1" | bc)
 
 	jpf_file=`echo -e "target=RandomUndirectedGraphTest\n
 	classpath=.\n

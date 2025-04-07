@@ -11,7 +11,7 @@ mkdir benchmarks/jpf/logs/ex.bisim.robust
 cp benchmarks/jpf/set_isolation/logs/ex.bisim.new/* benchmarks/jpf/logs/ex.bisim.new/
 cp benchmarks/jpf/set_isolation/logs/ex.bisim.robust/* benchmarks/jpf/logs/ex.bisim.robust/
 
-benchmarks/qvbs/prism-auto benchmarks/qvbs/table3 -p prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log -ex -bisim qvbs/table3/logs --log-subdir
+benchmarks/qvbs/prism-auto benchmarks/qvbs/table3 -p prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log benchmarks/qvbs/table3/logs --log-subdir
 benchmarks/qvbs/prism-log-extract benchmarks/qvbs/table3/logs --extension=log --groupby=log_dir --groupkey=benchmark --fields=min_states,time_bisim > benchmarks/qvbs/table3/results.csv
 
 cd benchmarks/jpf/jpf_files

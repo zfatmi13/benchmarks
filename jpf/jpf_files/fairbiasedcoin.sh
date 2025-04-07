@@ -3,7 +3,7 @@
 bias=0
 # loop through bias = 0.1, 0.2, ..., 0.9
 for (( i = 1; i <= 9; i++ )); do
-	bias=$(echo "$bias + 0.1"|bc)
+	bias=$(echo "$bias + 0.1" | bc)
 
 	jpf_file=`echo -e "target=FairBiasedCoinTest\n
 	classpath=.\n
