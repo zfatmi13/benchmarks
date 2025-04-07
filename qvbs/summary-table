@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import argparse,csv
+import argparse,csv,re
 
 def pad_col(col, max_width):
     return col.ljust(max_width)
@@ -27,10 +27,13 @@ with open(args.inputFile1, 'r') as csvfile:
                 robustSecond = 0 # false
             firstLine = False
         elif check_empty(row):
-            key = (re.sub(r'\d+', '', row[0]), row[1])
-            instances[key] = instances.setdefault(key, 0) + 1
-            states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))
-            times[key] = times.setdefault(key, 0) + ((float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond]))
+            if float(row[7 - robustSecond]) == 0:
+                print('Warning: cannot divide by zero, skipping benchmark ' + row[0] + ' (' + row[1] + '), row ' + row[2] + '.')
+            else:
+                key = (re.sub(r'\d+', '', row[0]), row[1])
+                instances[key] = instances.setdefault(key, 0) + 1
+                states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))
+                times[key] = times.setdefault(key, 0) + ((float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond]))
         else:
             print('Warning: the benchmark ' + row[0] + ' (' + row[1] + ') is missing some information in row ' + row[2] + '.')
 

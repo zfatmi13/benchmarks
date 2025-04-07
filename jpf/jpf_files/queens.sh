@@ -1,10 +1,7 @@
 #!/bin/bash
 
-size=1
-
 # loop through size = 1, 2, ..., 200
-for (( j = 1; j <=9; j++ )); do
-	size=$((size + 1))
+for (( size = 4; size <= 9; size++ )); do
 	
 	jpf_file=`echo -e "target=QueensTest\n
 	classpath=.\n
