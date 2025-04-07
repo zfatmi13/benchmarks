@@ -34,10 +34,14 @@ for (( zero_count = $((array_size / 2 + 1)); zero_count <= $((array_size - 1)); 
 	${jpf_file}
 EOF
 
-	# run JPF
+	export JAVA_HOME=/opt/java/openjdk8
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/jpf/jpf-core/bin/jpf MajorityElementTest.jpf
 	# generate PRISM model file
 	java JPFtoPRISM MajorityElementTest ../has_majority_element/hasMajorityElement${zero_count}
+	
+	export JAVA_HOME=/opt/java/openjdk
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/benchmarks/qvbs/prism-auto ../has_majority_element/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../logs --log-subdir
 
 	rm ../has_majority_element/hasMajorityElement${zero_count}.tra

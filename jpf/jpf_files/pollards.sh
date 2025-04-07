@@ -34,10 +34,15 @@ for (( i = 4000; i <= 5000; i++ )); do
 		cat > PollardFactoringTest.jpf <<EOF
 		${jpf_file}
 EOF
-		# run JPF
+		
+		export JAVA_HOME=/opt/java/openjdk8
+		export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 		/home/jpf/jpf-core/bin/jpf PollardFactoringTest.jpf
 		# generate PRISM model file
 		java JPFtoPRISM PollardFactoringTest ../pollards_factorization/pollardsFactorization${number}
+
+		export JAVA_HOME=/opt/java/openjdk
+		export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 		/home/benchmarks/qvbs/prism-auto ../pollards_factorization/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../logs --log-subdir
 
 		rm ../pollards_factorization/pollardsFactorization${number}.tra

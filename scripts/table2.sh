@@ -1,6 +1,5 @@
 #!/bin/bash
 
-export PRISM_JAVAMAXMEM=8g
 mkdir benchmarks/qvbs/table2/logs
 mkdir benchmarks/qvbs/table2/logs/ex.bisim.robust
 cp benchmarks/qvbs/table1/logs/ex.bisim.robust/crowds.pm.const.TotalRuns=5,CrowdSize=10.positive.pctl.ex.bisim.robust.log benchmarks/qvbs/table2/logs/ex.bisim.robust/

@@ -16,10 +16,15 @@ for (( i = 1; i <= 9; i++ )); do
 	cat > FairBiasedCoinTest.jpf <<EOF
 	${jpf_file}
 EOF
-	# run JPF
+	
+	export JAVA_HOME=/opt/java/openjdk8
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/jpf/jpf-core/bin/jpf FairBiasedCoinTest.jpf
 	# generate PRISM model file
 	java JPFtoPRISM FairBiasedCoinTest ../fair_biased_coin/fairBiasedCoin${bias}
+
+	export JAVA_HOME=/opt/java/openjdk
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/benchmarks/qvbs/prism-auto ../fair_biased_coin/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../logs --log-subdir
 
 	rm ../fair_biased_coin/fairBiasedCoin${bias}.tra

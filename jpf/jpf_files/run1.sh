@@ -44,12 +44,13 @@ for (( s_t_size = 3; s_t_size <= max_size; s_t_size++ )); do
 	${jpf_file}
 EOF
 	
-	# run JPF
+	export JAVA_HOME=/opt/java/openjdk8
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/jpf/jpf-core/bin/jpf SetIsolationTest.jpf -Xmx=8g
-	# generate PRISM model file
 	java JPFtoPRISM SetIsolationTest ../set_isolation/setIsolation${s_t_size}
 
-	# output the probability, and save it to results.txt
+	export JAVA_HOME=/opt/java/openjdk
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/benchmarks/qvbs/prism-auto ../set_isolation/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../set_isolation/logs --log-subdir
 
 	rm ../set_isolation/setIsolation${s_t_size}.tra

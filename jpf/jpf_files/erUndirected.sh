@@ -20,9 +20,14 @@ for (( j = 1; j <= 10; j++ )); do
 	cat > RandomGraphTest.jpf <<EOF
 	${jpf_file}
 EOF
-	# run JPF
+	
+	export JAVA_HOME=/opt/java/openjdk8
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/jpf/jpf-core/bin/jpf RandomGraphTest.jpf
 	java JPFtoPRISM RandomGraphTest ../erdos-renyi_undirected/erdosRenyiModelU${prob}
+
+	export JAVA_HOME=/opt/java/openjdk
+	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
 	/home/benchmarks/qvbs/prism-auto ../erdos-renyi_undirected/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../logs --log-subdir
 
 	rm ../erdos-renyi_undirected/erdosRenyiModelU${prob}.tra
