@@ -1,2 +1,0 @@
-// Maximise the probability of the intruder finding the item
-"find": <<p1>> Pmax=? [ F "found_item" ];

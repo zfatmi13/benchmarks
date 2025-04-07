@@ -1,3 +1,0 @@
-../models/ctmcs/embedded, danger_time.csl
-../models/ctmcs/embedded, up_time.csl
-../models/ctmcs/mapk_cascade, activated_time.csl

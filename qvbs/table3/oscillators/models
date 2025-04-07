@@ -1,0 +1,7 @@
+oscillators.3-6-0.1-1.prism -const mu=0.1,lambda=1.0
+oscillators.6-6-0.1-1.prism -const mu=0.1,lambda=1.0
+oscillators.6-8-0.1-1.prism -const mu=0.1,lambda=1.0
+oscillators.6-10-0.1-1.prism -const mu=0.1,lambda=1.0
+oscillators.7-10-0.1-1.prism -const mu=0.1,lambda=1.0
+oscillators.8-8-0.1-1.prism -const mu=0.1,lambda=1.0
+oscillators.8-10-0.1-1.prism -const mu=0.1,lambda=1.0

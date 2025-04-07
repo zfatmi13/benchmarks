@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+import argparse,csv
+
+def pad_col(col, max_width):
+    return col.ljust(max_width)
+
+parser = argparse.ArgumentParser()
+parser.add_argument('inputFile1')
+parser.add_argument('inputFile2')
+parser.add_argument('outputFilename')
+args = parser.parse_args()
+all_rows = []
+
+with open(args.inputFile1, 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    firstLine = True
+    matches = False
+    for row in reader:
+        if firstLine:
+            if ("new" in row[4]) or (len(row) <= 6):
+                matches = True
+                all_rows.append(row)
+            else:
+                all_rows.append(row[0:4] + row[6:] + row[4:6])
+            firstLine = False
+        else:
+            if matches:
+                all_rows.append(row)
+            else:
+                all_rows.append(row[0:4] + row[6:] + row[4:6])
+
+with open(args.inputFile2, 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    firstLine = True
+    matches = False
+    for row in reader:
+        if firstLine:
+            if ("new" in row[4]) or (len(row) <= 6):
+                matches = True
+            firstLine = False
+        else:
+            if matches:
+                all_rows.append(row)
+            else:
+                all_rows.append(row[0:4] + row[6:] + row[4:6])
+
+all_rows[0] = [x.replace("ex.bisim.", "").replace("new", "bisim").replace("time_bisim", "time").replace("min_states", "min") for x in all_rows[0]]
+max_col_width = [0] * len(all_rows[0])
+for row in all_rows:
+    for idx, col in enumerate(row):
+        max_col_width[idx] = max(len(col), max_col_width[idx])
+
+with open(args.outputFilename, 'w') as f:
+    for row in all_rows:
+        to_print = ""
+        for idx, col in enumerate(row):
+            to_print += pad_col(col, max_col_width[idx]) + " | "
+        f.write(to_print + "\n")

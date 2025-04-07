@@ -1,0 +1,8 @@
+	target=QueensTest
+	classpath=.
+	target.args=1,10
+	@using=jpf-label
+	label.class=label.BooleanLocalVariable
+	label.BooleanLocalVariable.variable=QueensTest.main(java.lang.String[]):success
+	@using=jpf-probabilistic
+	listener=probabilistic.listener.StateSpaceText;label.StateLabelText

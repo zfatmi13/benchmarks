@@ -1,0 +1,3 @@
+haddad_monmege.pm -const N=20,p=0.7
+haddad_monmege.pm -const N=100,p=0.7
+haddad_monmege.pm -const N=300,p=0.7

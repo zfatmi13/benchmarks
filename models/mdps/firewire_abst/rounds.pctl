@@ -1,2 +1,0 @@
-// Minimum expected rounds to elect a leader
-"rounds": R{"rounds"}min=? [ F "done" ];

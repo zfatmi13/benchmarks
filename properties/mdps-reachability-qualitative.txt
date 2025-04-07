@@ -1,4 +1,0 @@
-../models/mdps/consensus, c1.pctl
-../models/mdps/wlan, sent.pctl
-../models/mdps/firewire_abst, elected.pctl
-../models/mdps/firewire, elected.pctl

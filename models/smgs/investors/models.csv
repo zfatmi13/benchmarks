@@ -1,3 +1,0 @@
-model_file,model_consts,model_type,states,time_constr
-"investors2.prism","vmax=10",SMG,172240,0.036
-"investors2.prism","vmax=20",SMG,568790,0.059

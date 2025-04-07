@@ -1,2 +1,0 @@
-// Min expected time to complete all tasks
-"time": <<sched>>R{"time"}min=?[ F "tasks_complete" ];

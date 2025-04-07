@@ -1,3 +1,0 @@
-../models/ptas/csma, collisions.pctl
-../models/ptas/repudiation_malicious, eventually.pctl
-../models/ptas/zeroconf, incorrect.pctl
