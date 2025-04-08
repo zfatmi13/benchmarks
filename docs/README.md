@@ -36,10 +36,10 @@ The file structure and content of the container is as follows:
 
 To replicate all of the experiments of the paper (i.e. Tables 1 - 4 in Section 6), we have provided evaluation scripts which can be run by following the steps outlined below. We have provided an estimate for how long each command will take, after which the corresponding table will be printed to the console and saved in a text file, such as `table1.txt` for example.
 
-1. Run `./table1.sh` : (takes up to 1.5 hours)
-2. Run `./table2.sh` : depends on step 1 (takes approximately 5 minutes)
-3. Run `./table3.sh` : depends on step 1 (takes up to 1 hour)
-4. Run `./table4.sh` : (takes approximately 5 minutes)
+1. Run `./table1.sh` (takes up to 1.5 hours): Note that the benchmarks `oscillators` and `setIsolation` have the parameters attached to the model file name instead of in the model constants column.
+2. Run `./table2.sh` (depends on step 1 - takes approximately 5 minutes)
+3. Run `./table3.sh` (depends on step 1 - takes up to 1 hour): Benchmarks `egl`, `leader_sync` and `oscillators` will have two rows (one per property), which we combined in the paper due to the similarity of the % increase in time. If some benchmarks run very quickly, their time to compute bisimulation will be recorded as `0` and we cannot compute the % increase in time. For such instances, a divide by zero warning will be printed to the console, along with the benchmark name, and one less instance will be reported in `table3.txt`.
+4. Run `./table4.sh` (takes approximately 5 minutes)
 
 Please note that the rows of the tables may appear in a different order than that of the paper! Furthermore, due to differing architectures, the time required to run the bisimilarity algorithm may differ slightly (note that the time is reported in seconds in the tables). If you would prefer to run all of the 4 scripts above in one go, you can use `./all-tables.sh`.
 
