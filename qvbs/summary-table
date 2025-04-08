@@ -49,10 +49,11 @@ with open(args.inputFile2, 'r') as csvfile:
         elif check_empty(row):
             if float(row[7 - robustSecond]) == 0:
                 print('Warning: cannot divide by zero, skipping benchmark ' + row[0] + ' (' + row[1] + '), row ' + row[2] + '.')
-            key = (re.sub(r'\d+', '', row[0]), row[1])
-            instances[key] = instances.setdefault(key, 0) + 1
-            states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))
-            times[key] = times.setdefault(key, 0) + ((float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond]))
+            else:
+                key = (re.sub(r'\d+', '', row[0]), row[1])
+                instances[key] = instances.setdefault(key, 0) + 1
+                states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))
+                times[key] = times.setdefault(key, 0) + ((float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond]))
         else:
             print('Warning: the benchmark ' + row[0] + ' (' + row[1] + ') is missing some information in row ' + row[2] + '.')
 
