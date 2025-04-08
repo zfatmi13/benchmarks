@@ -17,6 +17,9 @@ args = parser.parse_args()
 instances = {}
 states = {}
 times = {}
+total_instances = 0
+total_states = 0
+total_time = 0
 with open(args.inputFile1, 'r') as csvfile:
     reader = csv.reader(csvfile)
     firstLine = True
@@ -34,6 +37,9 @@ with open(args.inputFile1, 'r') as csvfile:
                 instances[key] = instances.setdefault(key, 0) + 1
                 states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))
                 times[key] = times.setdefault(key, 0) + ((float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond]))
+                total_instances += 1
+                total_states += (float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond])
+                total_time += (float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond])
         else:
             print('Warning: the benchmark ' + row[0] + ' (' + row[1] + ') is missing some information in row ' + row[2] + '.')
 
@@ -54,6 +60,9 @@ with open(args.inputFile2, 'r') as csvfile:
                 instances[key] = instances.setdefault(key, 0) + 1
                 states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))
                 times[key] = times.setdefault(key, 0) + ((float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond]))
+                total_instances += 1
+                total_states += (float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond])
+                total_time += (float(row[5 + robustSecond]) - float(row[7 - robustSecond]))/float(row[7 - robustSecond])
         else:
             print('Warning: the benchmark ' + row[0] + ' (' + row[1] + ') is missing some information in row ' + row[2] + '.')
 
@@ -62,6 +71,8 @@ summary.append(["model", "property", "instances", "% inc states", "% inc time"])
 for key, value in instances.items():
     row = list(key) + [str(value)] + [f'{(100*states[key])/value:.2f}'] + [f'{(100*times[key])/value:.2f}']
     summary.append(row)
+total_row = ["total", "", str(total_instances)] + [f'{(100*total_states)/total_instances:.2f}'] + [f'{(100*total_time)/total_instances:.2f}']
+summary.append(total_row)
 
 max_col_width = [0] * len(summary[0])
 for row in summary:
