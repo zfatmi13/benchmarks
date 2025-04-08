@@ -47,6 +47,8 @@ with open(args.inputFile2, 'r') as csvfile:
                 robustSecond = 0 # false
             firstLine = False
         elif check_empty(row):
+            if float(row[7 - robustSecond]) == 0:
+                print('Warning: cannot divide by zero, skipping benchmark ' + row[0] + ' (' + row[1] + '), row ' + row[2] + '.')
             key = (re.sub(r'\d+', '', row[0]), row[1])
             instances[key] = instances.setdefault(key, 0) + 1
             states[key] = states.setdefault(key, 0) + ((float(row[4 + robustSecond]) - float(row[6 - robustSecond]))/float(row[6 - robustSecond]))

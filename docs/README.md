@@ -16,7 +16,7 @@ The artifact is a Docker image, which will automatically set up a container cont
 
 First, load the docker image from the .tar archive (Docker may require `sudo` root privileges) and run the container with:
 ```
-docker load < robust-bisimilarity.tar
+docker load -i robust-bisimilarity.tar.gz
 docker run -it robust-bisimilarity
 ```
 Note that if you exit the container and want to enter it again, use `docker start -i robust-bisimilarity`.
@@ -36,10 +36,10 @@ The file structure and content of the container is as follows:
 
 To replicate all of the experiments of the paper (i.e. Tables 1 - 4 in Section 6), we have provided evaluation scripts which can be run by following the steps outlined below. We have provided an estimate for how long each command will take, after which the corresponding table will be printed to the console and saved in a text file, such as `table1.txt` for example.
 
-1. Run `./table1.sh` : (takes approximately )
-2. Run `./table2.sh` : depends on step 1 (takes approximately )
-3. Run `./table3.sh` : depends on step 1 (takes approximately )
-4. Run `./table4.sh` : (takes approximately )
+1. Run `./table1.sh` : (takes up to 1.5 hours)
+2. Run `./table2.sh` : depends on step 1 (takes approximately 5 minutes)
+3. Run `./table3.sh` : depends on step 1 (takes up to 1 hour)
+4. Run `./table4.sh` : (takes approximately 5 minutes)
 
 Please note that the rows of the tables may appear in a different order than that of the paper! Furthermore, due to differing architectures, the time required to run the bisimilarity algorithm may differ slightly (note that the time is reported in seconds in the tables). If you would prefer to run all of the 4 scripts above in one go, you can use `./all-tables.sh`.
 

@@ -17,14 +17,14 @@ for (( j = 1; j <= 10; j++ )); do
 	label.BooleanLocalVariable.variable = RandomGraph.createUndirectedGraph():isConnected\n
 	@using=jpf-probabilistic\n
 	listener=probabilistic.listener.StateSpaceText;label.StateLabelText"`
-	cat > RandomGraphTest.jpf <<EOF
+	cat > RandomUndirectedGraphTest.jpf <<EOF
 	${jpf_file}
 EOF
 	
 	export JAVA_HOME=/opt/java/openjdk8
 	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
-	/home/jpf/jpf-core/bin/jpf RandomGraphTest.jpf
-	java JPFtoPRISM RandomGraphTest ../erdos-renyi_undirected/erdosRenyiModelU${prob}
+	/home/jpf/jpf-core/bin/jpf RandomUndirectedGraphTest.jpf
+	java JPFtoPRISM RandomUndirectedGraphTest ../erdos-renyi_undirected/erdosRenyiModelU${prob}
 
 	export JAVA_HOME=/opt/java/openjdk
 	export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
@@ -32,7 +32,7 @@ EOF
 
 	rm ../erdos-renyi_undirected/erdosRenyiModelU${prob}.tra
 	rm ../erdos-renyi_undirected/erdosRenyiModelU${prob}.lab
-	rm RandomGraphTest.jpf
-	rm RandomGraphTest.tra
-	rm RandomGraphTest.lab
+	rm RandomUndirectedGraphTest.jpf
+	rm RandomUndirectedGraphTest.tra
+	rm RandomUndirectedGraphTest.lab
 done
