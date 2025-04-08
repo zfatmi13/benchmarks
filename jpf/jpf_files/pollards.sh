@@ -45,8 +45,8 @@ EOF
 		echo "Running PRISM"
 		/home/benchmarks/qvbs/prism-auto ../pollards_factorization/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../logs --log-subdir
 
-		rm ../pollards_factorization/pollardsFactorization${number}.tra
-		rm ../pollards_factorization/pollardsFactorization${number}.lab
+		#rm ../pollards_factorization/pollardsFactorization${number}.tra
+		#rm ../pollards_factorization/pollardsFactorization${number}.lab
 		rm PollardFactoringTest.jpf
 		rm PollardFactoringTest.tra
 		rm PollardFactoringTest.lab
