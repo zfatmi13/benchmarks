@@ -42,7 +42,7 @@ EOF
 
 		export JAVA_HOME=/opt/java/openjdk
 		export PATH="${JAVA_HOME}/bin:${ORIG_PATH}"
-		print("Running PRISM")
+		echo "Running PRISM"
 		/home/benchmarks/qvbs/prism-auto ../pollards_factorization/ -p /home/prism/prism/bin/prism --args-list "-ex -bisim -new,-ex -bisim -robust" --log ../logs --log-subdir
 
 		rm ../pollards_factorization/pollardsFactorization${number}.tra
