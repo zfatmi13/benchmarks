@@ -21,10 +21,10 @@ docker run -it --name=robust-bisimilarity robust-bisimilarity:latest
 ```
 Note that if you exit the container and want to enter it again, use `docker start -i robust-bisimilarity`.
 
-The file structure and content of the container is as follows:
-* **home**: the main folder of the artifact, which contains the *LICENSE*, a PDF of the submitted paper, and evaluation scripts to reproduce the tables (described in the section below)
-  * **prism**: the PRISM model checker, https://github.com/prismmodelchecker/prism
-  * **jpf**: Java PathFinder, https://github.com/javapathfinder/jpf-core
+The file structure and content of the container is as follows (each subdirectory has a README with futher information):
+* **home**: the main folder of the artifact, which contains the *LICENSE* and evaluation scripts to reproduce the tables (described in the section below)
+  * **prism**: the PRISM model checker (https://github.com/zfatmi13/prism forked from https://github.com/prismmodelchecker/prism)
+  * **jpf**: Java PathFinder (https://github.com/javapathfinder/jpf-core) and it's two extensions, jpf-probabilistic and jpf-label
   * **benchmarks**: a folder containing the benchmarks used in our evaluation
     * *qvbs*: the QVBS benchmarks used 
     * *jpf*: the jpf examples used
